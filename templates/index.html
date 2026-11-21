@@ -1,0 +1,30 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Frontdesk · Support operations</title>
+  <link rel="stylesheet" href="{% static 'frontdesk/styles.css' %}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">F</span><span>frontdesk</span></div>
+      <div class="workspace-label">WORKSPACE</div>
+      <button class="nav-item active" data-filter="all">▦ <span>Inbox</span><b id="nav-count">0</b></button>
+      <button class="nav-item" data-filter="mine">◉ <span>My tickets</span></button>
+      <button class="nav-item" data-filter="late">◷ <span>SLA at risk</span></button>
+      <button class="nav-item" data-filter="waiting">◌ <span>Waiting on customer</span></button>
+      <div class="sidebar-footer"><div class="avatar">SA</div><div><strong id="agent-name">{{ agent_name }}</strong><small>Support agent</small></div><span class="status-dot"></span></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div><p class="eyebrow">FRONTDESK · SUPPORT OPERATIONS</p><h1>Good morning, <span id="greeting-name">{{ agent_name }}</span></h1></div><div class="top-actions"><span class="live-pill"><i></i> Live</span><button class="avatar">SA</button></div></header>
+      <section class="metrics" id="metrics"></section>
+      <section class="content-grid">
+        <div class="inbox-panel"><div class="panel-head"><div><h2>Tickets</h2><p id="ticket-subtitle">All work in one view</p></div><div class="panel-tools"><div class="search">⌕ <input id="search" placeholder="Search tickets"></div><button class="filter-button" id="refresh">↻</button></div></div><div class="ticket-table-head"><span>Ticket</span><span>Customer</span><span>Priority</span><span>Status</span><span>Assignee</span></div><div id="ticket-list"></div></div>
+        <aside id="detail" class="detail-panel"><div class="empty-detail"><div class="empty-icon">✦</div><h3>Select a ticket</h3><p>Inspect the conversation, SLA clock, and internal notes.</p></div></aside>
+      </section>
+    </main>
+  </div><div id="toast" class="toast"></div><script src="{% static 'frontdesk/app.js' %}"></script>
+</body>
+</html>
